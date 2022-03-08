@@ -107,7 +107,7 @@ class WelcomePage extends StatelessWidget {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const CategoryListPage(),
+                                builder: (context) => CategoryListPage(),
                               ),
                               (Route<dynamic> route) => false,
                             );

@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:endesha_groceries/helpers/app_colors.dart';
+import 'package:endesha_groceries/pages/category_list_page.dart';
 import 'package:endesha_groceries/pages/splash_page.dart';
 import 'package:endesha_groceries/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
