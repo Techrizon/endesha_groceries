@@ -5,7 +5,7 @@ import 'package:endesha_groceries/models/category.dart';
 import 'package:endesha_groceries/pages/selected_category_page.dart';
 import 'package:endesha_groceries/widgets/category_bottom_bar.dart';
 import 'package:endesha_groceries/widgets/category_card.dart';
-import 'package:endesha_groceries/widgets/iconfont.dart';
+import 'package:endesha_groceries/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -17,26 +17,7 @@ class CategoryListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(),
-      appBar: AppBar(
-        centerTitle: true,
-        title: IconFont(
-          iconName: IconFontHelper.LOGO,
-          color: AppColors.MAIN_COLOR,
-          size: 40,
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: AppColors.MAIN_COLOR),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 10.0),
-            padding: const EdgeInsets.all(10.0),
-            child: ClipOval(
-              child: Image.asset('assets/images/avatar.png'),
-            ),
-          )
-        ],
-      ),
+      appBar: MainAppBar(),
       body: Stack(
         children: [
           Column(
@@ -60,12 +41,13 @@ class CategoryListPage extends StatelessWidget {
                     return CategoryCard(
                       category: categories[index],
                       onCardClick: () {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SelectedCategoryPage(),
+                            builder: (context) => SelectedCategoryPage(
+                              selectedCategory: this.categories[index],
+                            ),
                           ),
-                          (Route<dynamic> route) => false,
                         );
                       },
                     );

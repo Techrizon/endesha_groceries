@@ -1,6 +1,7 @@
 import 'package:endesha_groceries/helpers/app_colors.dart';
 import 'package:endesha_groceries/helpers/iconhelper.dart';
 import 'package:endesha_groceries/models/category.dart';
+import 'package:endesha_groceries/models/subcategory.dart';
 
 class Utils {
   static List<Category> getMockedCategories() {
@@ -10,7 +11,44 @@ class Utils {
         icon: IconFontHelper.MEATS,
         color: AppColors.MEATS,
         imageName: 'cat1',
-        subCategory: [],
+        subCategory: [
+          SubCategory(
+            name: "Cerdo",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_1",
+          ),
+          SubCategory(
+            name: "Vaca",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_2",
+          ),
+          SubCategory(
+            name: "Gallina",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_3",
+          ),
+          SubCategory(
+            name: "Pavo",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_4",
+          ),
+          SubCategory(
+            name: "Chivo",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_5",
+          ),
+          SubCategory(
+            name: "Conejo",
+            icon: IconFontHelper.MEATS,
+            color: AppColors.MEATS,
+            imageName: "cat1_6",
+          )
+        ],
       ),
       Category(
         name: "Frutas",

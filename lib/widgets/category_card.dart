@@ -28,7 +28,7 @@ class CategoryCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  'assets/images/' + this.category.imageName + '.png',
+                  'assets/images/' + category.imageName + '.png',
                   fit: BoxFit.cover,
                 ),
               ),
