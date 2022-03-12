@@ -1,6 +1,7 @@
 import 'package:endesha_groceries/helpers/app_colors.dart';
 import 'package:endesha_groceries/helpers/iconhelper.dart';
 import 'package:endesha_groceries/models/category.dart';
+import 'package:endesha_groceries/models/category_part.dart';
 import 'package:endesha_groceries/models/subcategory.dart';
 
 class Utils {
@@ -17,36 +18,73 @@ class Utils {
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_1",
+            parts: [
+              CategoryPart(
+                name: 'Jamon',
+                imageName: 'cat1_1_p1',
+                isSeleceted: false,
+              ),
+              CategoryPart(
+                name: 'Patas',
+                imageName: 'cat1_1_p2',
+                isSeleceted: false,
+              ),
+              CategoryPart(
+                name: 'Tocineta',
+                imageName: 'cat1_1_p3',
+                isSeleceted: false,
+              ),
+              CategoryPart(
+                name: 'Lomo',
+                imageName: 'cat1_1_p4',
+                isSeleceted: false,
+              ),
+              CategoryPart(
+                name: 'Costillas',
+                imageName: 'cat1_1_p5',
+                isSeleceted: false,
+              ),
+              CategoryPart(
+                name: 'Panza',
+                imageName: 'cat1_1_p6',
+                isSeleceted: false,
+              ),
+            ],
           ),
           SubCategory(
             name: "Vaca",
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_2",
+            parts: [],
           ),
           SubCategory(
             name: "Gallina",
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_3",
+            parts: [],
           ),
           SubCategory(
             name: "Pavo",
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_4",
+            parts: [],
           ),
           SubCategory(
             name: "Chivo",
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_5",
+            parts: [],
           ),
           SubCategory(
             name: "Conejo",
             icon: IconFontHelper.MEATS,
             color: AppColors.MEATS,
             imageName: "cat1_6",
+            parts: [],
           )
         ],
       ),

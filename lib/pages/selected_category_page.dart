@@ -1,8 +1,10 @@
 import 'package:endesha_groceries/models/category.dart';
+import 'package:endesha_groceries/pages/details_page.dart';
 import 'package:endesha_groceries/widgets/categoryicon.dart';
 import 'package:endesha_groceries/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SelectedCategoryPage extends StatelessWidget {
   Category selectedCategory;
 
@@ -49,6 +51,16 @@ class SelectedCategoryPage extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         //TODO: navigate to the details page
+                        var subCategory =
+                            this.selectedCategory.subCategory![index];
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailsPage(
+                              subCategory: subCategory,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         child: Column(
