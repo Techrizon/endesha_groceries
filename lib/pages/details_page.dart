@@ -1,14 +1,12 @@
 import 'package:endesha_groceries/helpers/app_colors.dart';
-import 'package:endesha_groceries/models/category_part.dart';
+import 'package:endesha_groceries/widgets/category_parts_list.dart';
 import 'package:endesha_groceries/widgets/categoryicon.dart';
 import 'package:endesha_groceries/widgets/main_app_bar.dart';
+import 'package:endesha_groceries/widgets/theme_buttons.dart';
+import 'package:endesha_groceries/widgets/unit_price_widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
-  int amount = 0;
-  double price = 15.0;
-  double cost = 0.0;
-
   var subCategory;
   DetailsPage({
     Key? key,
@@ -154,281 +152,26 @@ class _DetailsPageState extends State<DetailsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                      child: Text('Seleccione la parte que desea:'),
-                    ),
-                    Container(
-                      height: 200,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: widget.subCategory.parts.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                widget.subCategory.parts
-                                    .forEach((CategoryPart part) {
-                                  part.isSeleceted =
-                                      widget.subCategory.parts[index] == part;
-                                });
-                              });
-                            },
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.all(15),
-                                  width: 120,
-                                  height: 150,
-                                  decoration: BoxDecoration(
-                                    border: widget.subCategory.parts[index]
-                                            .isSeleceted
-                                        ? Border.all(
-                                            color: widget.subCategory.color,
-                                            width: 7,
-                                          )
-                                        : null,
-                                    borderRadius: BorderRadius.circular(25),
-                                    image: DecorationImage(
-                                      image: AssetImage('assets/images/' +
-                                          widget.subCategory.parts[index]
-                                              .imageName +
-                                          '.png'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        offset: Offset.zero,
-                                        blurRadius: 10,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(left: 25),
-                                  child: Text(
-                                    widget.subCategory.parts[index].name,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: widget.subCategory.color,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                    CategoryPartsList(subCategory: widget.subCategory),
+                    UnitPriceWidget(),
+                    ThemeButton(
+                      label: 'Anadir al Carrito',
+                      onClick: () {},
+                      icon: const Icon(
+                        Icons.shopping_cart,
+                        color: Colors.white,
                       ),
                     ),
-                    Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: 'Unidad: '),
-                                TextSpan(
-                                  text: 'Libra',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                TextSpan(
-                                    text: '(max 20)',
-                                    style: TextStyle(fontSize: 12)),
-                              ],
-                            ),
-                          ),
+                    Expanded(
+                      child: ThemeButton(
+                        label: 'Locación del Producto',
+                        onClick: () {},
+                        icon: const Icon(
+                          Icons.location_pin,
+                          color: Colors.white,
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.only(left: 20, right: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 10,
-                                offset: Offset.zero,
-                                color: Colors.black.withOpacity(0.1),
-                              )
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTap: widget.amount < 20
-                                    ? () {
-                                        setState(() {
-                                          widget.amount++;
-                                          widget.cost =
-                                              widget.price * widget.amount;
-                                        });
-                                      }
-                                    : null,
-                                child: const Icon(
-                                  Icons.add_circle_outline,
-                                  size: 50,
-                                  color: AppColors.MEATS,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 10),
-                                  child: Center(
-                                    child: Text.rich(
-                                      TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: widget.amount.toString(),
-                                            style:
-                                                const TextStyle(fontSize: 40),
-                                          ),
-                                          const TextSpan(
-                                            text: 'lbs.',
-                                            style: TextStyle(fontSize: 20),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: widget.amount > 0
-                                    ? () {
-                                        setState(() {
-                                          widget.amount--;
-                                          widget.cost =
-                                              widget.price * widget.amount;
-                                        });
-                                      }
-                                    : null,
-                                child: const Icon(
-                                  Icons.remove_circle_outline,
-                                  size: 50,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            right: 20,
-                            left: 20,
-                            bottom: 20,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: 'Precio: '),
-                                    TextSpan(
-                                      text: '\$${widget.price}/ lb',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                '\$${widget.cost}',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 20,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Material(
-                          color: AppColors.MAIN_COLOR,
-                          child: InkWell(
-                            splashColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                            highlightColor:
-                                AppColors.MAIN_COLOR.withOpacity(0.2),
-                            onTap: () {},
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              child: const Text(
-                                'Añadido al Carrito',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.transparent,
-                                border: Border.all(
-                                  color: AppColors.MAIN_COLOR,
-                                  width: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 20,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Material(
-                          color: AppColors.DARK_GREEN,
-                          child: InkWell(
-                            splashColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                            highlightColor:
-                                AppColors.MAIN_COLOR.withOpacity(0.2),
-                            onTap: () {},
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              child: const Text(
-                                'Locación del Producto',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.transparent,
-                                border: Border.all(
-                                  color: AppColors.DARK_GREEN,
-                                  width: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        color: AppColors.DARK_GREEN,
+                        highlight: AppColors.DARK_GREEN,
                       ),
                     ),
                   ],

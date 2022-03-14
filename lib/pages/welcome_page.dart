@@ -4,6 +4,7 @@ import 'package:endesha_groceries/helpers/app_colors.dart';
 import 'package:endesha_groceries/helpers/iconhelper.dart';
 import 'package:endesha_groceries/pages/category_list_page.dart';
 import 'package:endesha_groceries/widgets/iconfont.dart';
+import 'package:endesha_groceries/widgets/theme_buttons.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -71,71 +72,29 @@ class WelcomePage extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlatButton(
-                      color: AppColors.MAIN_COLOR,
-                      padding: const EdgeInsets.all(25),
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: const Text(
-                        'Tratar Ahora!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  ThemeButton(
+                    label: "Tratar Ahora!",
+                    labelColor: Colors.white,
+                    onClick: () {},
+                    icon: const Icon(
+                      Icons.login,
+                      color: Colors.white,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                      bottom: 20,
+                  ThemeButton(
+                    label: "Hacer Login",
+                    onClick: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CategoryListPage()),
+                          (Route<dynamic> route) => false);
+                    },
+                    icon: const Icon(
+                      Icons.login,
+                      color: Colors.white,
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          splashColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                          highlightColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                          onTap: () {
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CategoryListPage(),
-                              ),
-                              (Route<dynamic> route) => false,
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            child: const Text(
-                              'Hacer Login',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: AppColors.MAIN_COLOR,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: AppColors.MAIN_COLOR,
-                                width: 4,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             )
