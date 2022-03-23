@@ -2,9 +2,27 @@ import 'package:endesha_groceries/helpers/app_colors.dart';
 import 'package:endesha_groceries/helpers/iconhelper.dart';
 import 'package:endesha_groceries/models/category.dart';
 import 'package:endesha_groceries/models/category_part.dart';
+import 'package:endesha_groceries/models/onboarding_content.dart';
 import 'package:endesha_groceries/models/subcategory.dart';
 
 class Utils {
+  static List<OnBoardingContent> getOnboarding() {
+    return [
+      OnBoardingContent(
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        image: 'onboard1',
+      ),
+      OnBoardingContent(
+        message: "Proin bibendum dolor nisi, nec tempor purus aliquam quis.",
+        image: 'onboard2',
+      ),
+      OnBoardingContent(
+        message: "Vestibulum id mi et lectus dictum volutpat non quis urna.",
+        image: 'onboard3',
+      ),
+    ];
+  }
+
   static List<Category> getMockedCategories() {
     return [
       Category(

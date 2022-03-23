@@ -42,7 +42,15 @@ class ThemeButton extends StatelessWidget {
               this.onClick();
             },
             child: Container(
-              padding: const EdgeInsets.all(20),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                  color: this.borderColor,
+                  width: this.borderWidth,
+                ),
+              ),
               child: this.icon == null
                   ? Text(
                       this.label,
@@ -68,14 +76,6 @@ class ThemeButton extends StatelessWidget {
                         ),
                       ],
                     ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.transparent,
-                border: Border.all(
-                  color: this.color,
-                  width: 4,
-                ),
-              ),
             ),
           ),
         ),

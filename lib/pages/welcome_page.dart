@@ -3,6 +3,7 @@
 import 'package:endesha_groceries/helpers/app_colors.dart';
 import 'package:endesha_groceries/helpers/iconhelper.dart';
 import 'package:endesha_groceries/pages/category_list_page.dart';
+import 'package:endesha_groceries/pages/onbording_page.dart';
 import 'package:endesha_groceries/widgets/iconfont.dart';
 import 'package:endesha_groceries/widgets/theme_buttons.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,27 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                   ThemeButton(
-                    label: "Hacer Login",
+                    label: "On Boarding",
+                    color: AppColors.DARKER_GREEN,
+                    onClick: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => OnboardingPage()),
+                        (Route<dynamic> route) => false,
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.add_alert_sharp,
+                      color: Colors.white,
+                    ),
+                  ),
+                  ThemeButton(
+                    label: "Hcer Login",
+                    color: Colors.transparent,
+                    labelColor: Colors.white,
+                    highlight: AppColors.MAIN_COLOR.withOpacity(0.5),
+                    borderWidth: 4,
+                    borderColor: AppColors.MAIN_COLOR,
                     onClick: () {
                       Navigator.pushAndRemoveUntil(
                           context,
